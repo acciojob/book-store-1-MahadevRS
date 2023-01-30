@@ -57,9 +57,9 @@ public class BookController {
     // pass id as path variable
     // getBookById()
     @GetMapping("/get-book-by-id/{id}")
-    public ResponseEntity getBookById(@PathVariable("id") String id){
+    public ResponseEntity getBookById(@PathVariable("id") int id){
         for(Book book:bookList){
-            if(book.getId()==(Integer.parseInt(id))){
+            if(book.getId()==id){
                 return new ResponseEntity<>(book,HttpStatus.FOUND);
             }
         }
@@ -70,9 +70,9 @@ public class BookController {
     // pass id as path variable
     // deleteBookById()
     @DeleteMapping("/delete-book-by-id/{id}")
-    public ResponseEntity deleteBookById(@PathVariable("id") String id){
+    public ResponseEntity deleteBookById(@PathVariable("id") int id){
         for(Book book:bookList){
-            if(book.getId()==(Integer.parseInt(id))){
+            if(book.getId()==id){
                 bookList.remove(book);
                 return new ResponseEntity("success",HttpStatus.ACCEPTED);
             }
